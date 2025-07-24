@@ -29,6 +29,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { CategoriesSliderComponent } from './components/categories-slider/categories-slider.component';
 import { MainSliderComponent } from './components/main-slider/main-slider.component';
 import { authInterceptor } from './interceptors/auth.interceptor';
+import { loadingInterceptor } from './interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ import { authInterceptor } from './interceptors/auth.interceptor';
      NgxSpinnerModule,
      
   ],
-  providers: [provideHttpClient(withInterceptors([authInterceptor]))],
+  providers: [provideHttpClient(withInterceptors([authInterceptor,loadingInterceptor]))],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
