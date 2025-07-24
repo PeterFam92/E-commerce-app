@@ -1,0 +1,53 @@
+<div class="w-75 mx-auto">
+ <form [formGroup] ="loginFormObj" (ngSubmit)="handelLogin()"  class="p-5">
+   @if (errorResponseMessage!=="")
+    {<p class="alert alert-danger text-center">{{errorResponseMessage}}</p>}
+
+
+
+    <label class="mt-4" for="email">enter your Email</label>
+    <input formControlName="email" class="form-control" type="email" id="email">
+@if (loginFormObj.get('email')?.touched) {
+   <div>
+   @if(loginFormObj.get('email')?.getError('required')) {
+      <p class="text-danger text-small">email is required</p>
+   }@else if (loginFormObj.get('email')?.getError('email')) {
+      <p class="text-danger text-small">email is not valid</p>
+   }
+   </div>
+}
+
+
+
+    <label class="mt-4" for="password">enter your password</label>
+    <input formControlName="password" class="form-control" type="password" id="password">
+@if (loginFormObj.get('password')?.touched) {
+   <div>
+      @if (loginFormObj.get('password')?.getError('required')) {
+         <p class="text-danger text-small">password is required</p>
+      }@else if (loginFormObj.get('password')?.getError('pattern')) {
+         <p class="text-danger text-small">password must contain at least one uppercase letter, one lowercase letter, one number, and one special character</p>
+      }
+   </div>
+}
+
+    
+<div class="d-flex justify-content-end align-items-baseline">
+<a routerLink="/forget-password" class="me-4 text-secondary text-decoration-underline"> forgot your password ?</a>
+ <button [disabled]="loginFormObj.invalid ||isLoading" class=" border-2 bg-main btn text-light mt-2">
+      @if (isLoading===false) {
+         <span>Log In</span>
+      }
+      @else if (isLoading===true) {<span  class="fa-solid fa-spinner fa-spin"></span>}
+      
+      
+    </button>
+
+</div>
+    
+   
+ </form>
+</div>
+
+
+

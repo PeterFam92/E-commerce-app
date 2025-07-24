@@ -1,0 +1,57 @@
+@if(cartDetails!=null){
+
+  @if (cartDetails.numOfCartItems>0) {
+
+
+
+    <div class="container bg-main-light p-3 rounded shadow">
+  <h4 class="my-3 fw-medium">Shopping Cart</h4>
+  <p class="text-main fw-medium font-sm border-bottom py-2">
+    Total price:{{ cartDetails.data.totalCartPrice }}
+  </p>
+  @for (cartProduct of cartDetails.data.products;track cartProduct._id) {
+  <div class="row border-bottom py-3">
+    <div class="col-md-1">
+      <div>
+        <img class="w-100 img-thumbnail border rounded" [src]="cartProduct.product.imageCover" alt="" />
+      </div>
+    </div>
+    <div class="col-md-11">
+        <div class="d-flex justify-content-between">
+            <div>
+                <p class="my-0 fw-medium">{{cartProduct.product.title}}</p>
+                <p class="text-main fw-medium my-2 font-sm">{{cartProduct.price}} EGP</p>
+                <button (click)="deleteCartItem(cartProduct.product._id)" class="delete btn m-0 border rounded border-success">
+                    <i class="fa-solid fa-trash-can text-main ms-2"></i>
+                    <span class="ms-2">Remove</span>
+                </button>
+
+            </div>
+            <div>
+                <button (click)=" updateProductQuantity(cartProduct.product._id,cartProduct.count+1)" class="bg-main px-2 py-1 rounded text-white border-0" >+</button >
+                <span class="mx-2">{{cartProduct.count}}</span>
+                <button (click)=" updateProductQuantity(cartProduct.product._id,cartProduct.count-1)" class="bg-main px-2 py-1 rounded text-white border-0 ">-</button>
+            </div>
+
+        </div>
+    </div>
+  </div>
+  }
+
+  <button (click)="clearCartItems()" class="btn btn-danger mt-3">Remove All Items
+    <i class="ms-2 fa-solid fa-trash"></i>
+  </button>
+</div>
+
+  }
+
+  @else {
+  <h2 class="bg-main-light text-center container rounded shadow p-4">Your Freshcart Is Empty Please Add Products</h2>
+  }
+
+
+}
+
+ @else {
+  <h2 class="bg-main-light text-center container rounded shadow p-4">Your Freshcart Is Empty Please Add Products</h2>
+  }

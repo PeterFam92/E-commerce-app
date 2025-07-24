@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="text-center border p-5  rounded shadow border-2 border-success">
+            <img style="width: 200px;"  src="images/user- icon.svg" alt="">
+            <h5 class="mt-5 fw-light text-uppercase">welcome,<span class="text-main fw-medium">{{CurrentUserName}}</span></h5>
+            <a routerLink="update-password"routerLinkActive="fw-medium" class="mt-3 d-block  text-secondary text-decoration-underline">update user password</a>
+            <a routerLink="edit-userinfo"routerLinkActive="fw-medium" class="mt-3 d-block  text-secondary text-decoration-underline">edit user info</a>
+        </div>
+    </div>
+     <div class="col-md-8">
+        <div class="py-2 px-5">
+            <router-outlet></router-outlet>
+        </div>
+     </div>
+</div>

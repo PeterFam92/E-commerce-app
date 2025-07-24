@@ -1,0 +1,17 @@
+ 
+    <div class="product p-3">
+        <a [routerLink]="['/product-details',product._id]">
+        <img class="w-100" [src]="product.imageCover" [alt]="product.title">
+        <span class="text-main font-sm fw-medium">{{product.category.name}}</span>
+        <p class="fw-medium">{{getTwoWords(product.title) }}</p>
+       <div class="d-flex justify-content-between">
+         <span>{{product.price}} EGP</span>
+        <div>
+            <i class="fa-solid fa-star rating-color"></i>
+        <span>{{product.ratingsAverage}}</span>
+        </div>
+       </div>
+        </a>
+       <button (click)="addToCart(product._id)" class="btn bg-main text-white w-100 mt-3">Add to cart</button>
+    </div>
+

@@ -1,0 +1,12 @@
+button.delete:hover{
+    background-color: #0aad0a !important;
+    border: none !important;
+}
+
+button.delete:hover i {
+    color:white !important ;
+}
+ button.delete:hover span
+ {
+    color:white !important ;
+}

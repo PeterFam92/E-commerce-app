@@ -1,0 +1,89 @@
+<div class="w-75 mx-auto">
+ <form [formGroup]="signUpFormObj" (ngSubmit)="handleSignUp()" class="p-5">
+   @if (errorResponseMessage!=="")
+    {<p class="alert alert-danger text-center">{{errorResponseMessage}}</p>}
+
+    <label class="mt-4" for="name">enter your name</label>
+    <input formControlName="name" class="form-control" type="text" id="name">
+   @if (signUpFormObj.get('name')?.touched)
+    {
+<div>
+   @if(signUpFormObj.get('name')?.getError('required')) {
+      <p class="text-danger text-small">name is required</p>
+   }
+   @else if (signUpFormObj.get('name')?.getError('maxlength'))
+    {<p class="text-danger text-small">name must be max 20 characters</p>}
+   @else if(signUpFormObj.get('name')?.getError('minlength')) {
+      <p class="text-danger text-small">name must be at least 7 characters</p>
+   }
+</div>
+   }
+
+    <label class="mt-4" for="email">enter your Email</label>
+    <input formControlName="email" class="form-control" type="email" id="email">
+@if (signUpFormObj.get('email')?.touched) {
+   <div>
+   @if(signUpFormObj.get('email')?.getError('required')) {
+      <p class="text-danger text-small">email is required</p>
+   }@else if (signUpFormObj.get('email')?.getError('email')) {
+      <p class="text-danger text-small">email is not valid</p>
+   }
+   </div>
+}
+
+
+
+    <label class="mt-4" for="password">enter your password</label>
+    <input formControlName="password" class="form-control" type="password" id="password">
+@if (signUpFormObj.get('password')?.touched) {
+   <div>
+      @if (signUpFormObj.get('password')?.getError('required')) {
+         <p class="text-danger text-small">password is required</p>
+      }@else if (signUpFormObj.get('password')?.getError('pattern')) {
+         <p class="text-danger text-small">password must contain at least one uppercase letter, one lowercase letter, one number, and one special character</p>
+      }
+   </div>
+}
+
+    <label class="mt-4" for="rePassword">confirm your password</label>
+    <input formControlName="rePassword" class="form-control" type="password" id="rePassword">
+
+    @if (signUpFormObj.get('rePassword')?.dirty&&signUpFormObj.get('password')?.dirty) {
+
+   <div>
+      @if (signUpFormObj.getError('passwordMisMatch')) {
+         <p class="text-danger text-small">Passwords don't match </p>
+      }
+     
+     
+      
+   </div>
+}
+
+
+    <label class="mt-4" for="phone">enter your phone</label>
+    <input formControlName="phone" class="form-control" type="tel" id="phone">
+       @if (signUpFormObj.get('phone')?.touched) {
+   <div>
+      @if (signUpFormObj.get('phone')?.getError('required')) {
+         <p class="text-danger text-small">phone is required</p>
+      }@else if (signUpFormObj.get('phone')?.getError('pattern')) {
+         <p class="text-danger text-small">enter a valid phone number</p>
+      }
+   </div>
+   }
+
+    
+    <button [disabled]="signUpFormObj.invalid ||isLoading" class=" border-2 bg-main btn text-light mt-2">
+      @if (isLoading===false) {
+         <span>Sign Up</span>
+      }
+      @else if (isLoading===true) {<span  class="fa-solid fa-spinner fa-spin"></span>}
+      
+      
+    </button>
+ </form>
+</div>
+
+
+

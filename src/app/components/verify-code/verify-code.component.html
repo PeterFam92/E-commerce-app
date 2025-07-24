@@ -1,0 +1,40 @@
+<div class="w-75 mx-auto">
+   <h2 class="fw-bolder">verify your code:</h2>
+   <p class="font-sm mt-4 text-secondary">Please enter your verification code we sent you on Email to reset your password</p>
+ <form [formGroup]="verifyCodeForm" (ngSubmit)="handelVerifyCode()"  class="p-1">
+   @if (errorResponseMessage!=="")
+    {<p class="alert alert-danger text-center">{{errorResponseMessage}}</p>}
+
+
+
+    <label class="mt-4 " for="resetCode">enter your code</label>
+    <input formControlName="resetCode" class="form-control" type="text" id="resetCode">
+@if (verifyCodeForm.get('resetCode')?.touched) {
+   <div>
+   @if(verifyCodeForm.get('resetCode')?.getError('required')) {
+      <p class="text-danger text-small">verification code  is required</p>
+   }
+   </div>
+}
+
+
+
+
+    
+<div class="d-flex justify-content-end align-items-baseline">
+
+ <button [disabled]="verifyCodeForm.invalid ||isLoading" class=" border-2 bg-main btn text-light mt-2">
+      @if (isLoading===false) {
+         <span>send</span>
+      }
+      @else if (isLoading===true) {<span  class="fa-solid fa-spinner fa-spin"></span>}
+      
+      
+    </button>
+
+</div>
+    
+   
+ </form>
+</div>
+
