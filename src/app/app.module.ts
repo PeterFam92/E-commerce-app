@@ -6,7 +6,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrandsComponent } from './components/brands/brands.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CategoriesComponent } from './components/categories/categories.component';
@@ -32,6 +32,9 @@ import { authInterceptor } from './interceptors/auth.interceptor';
 import { loadingInterceptor } from './interceptors/loading.interceptor';
 import { ShippingaddressComponent } from './components/shippingaddress/shippingaddress.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { AddEGPPipe } from './pipes/add-egp.pipe';
+import { SliceTitlePipe } from './pipes/slice-title.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,9 @@ import { OrdersComponent } from './components/orders/orders.component';
     MainSliderComponent,
     ShippingaddressComponent,
     OrdersComponent,
+    AddEGPPipe,
+    SliceTitlePipe,
+    SearchPipe,
     
     
    
@@ -70,6 +76,7 @@ import { OrdersComponent } from './components/orders/orders.component';
      BrowserAnimationsModule,
      CarouselModule,
      NgxSpinnerModule,
+     FormsModule
      
   ],
   providers: [provideHttpClient(withInterceptors([authInterceptor,loadingInterceptor]))],

@@ -2,6 +2,7 @@ import { Component, inject, Input, input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderService } from '../../services/order.service';
 import { Router } from '@angular/router';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-shippingaddress',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class ShippingaddressComponent {
   orderService = inject(OrderService);
   router = inject(Router);
+  cartService = inject(CartService);
 
   @Input() id!: string;
   @Input() type!: string;
@@ -30,6 +32,7 @@ export class ShippingaddressComponent {
         .cashOrder(this.shippingAddressForm.value, this.id)
         .subscribe({
           next: () => {
+            this.cartService.numOfCartItemsSubject.next(0);
             this.router.navigate(['/allorders']);
           },
           error: () => {

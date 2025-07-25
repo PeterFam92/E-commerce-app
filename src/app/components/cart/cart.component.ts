@@ -18,28 +18,33 @@ constructor(private cartservice:CartService){}
 
 this.cartservice.getLoggedUserCart().subscribe({
   next:(response)=>{this.cartDetails=response},
-  error :(err)=>{console.log(err)}
+ 
 })
 
  }
 
  deleteCartItem(id:string){
   this.cartservice.removeSpecificCartItem(id).subscribe({
-    next:(response)=>{ this.cartDetails=response},
-    error:(err)=>{console.log(err);
-    }
+    next:(response:CartResponse)=>{ this.cartDetails=response;
+      this.cartservice.numOfCartItemsSubject.next(response.numOfCartItems)
+    },
+
   })
  }
 
  updateProductQuantity(id:string,count:number){
   this.cartservice.updateCartProductQuantity(id,count).subscribe({
-    next:(response)=>{this.cartDetails=response},
-    error:(err)=>{console.log(err); }
+    next:(response)=>{this.cartDetails=response;
+      this.cartservice.numOfCartItemsSubject.next(response.numOfCartItems)
+    },
+   
   })
  }
 clearCartItems(){
   this.cartservice.clearAllCartItems().subscribe({
-    next:(response)=>{this.cartDetails=null}
+    next:()=>{this.cartDetails=null;
+      this.cartservice.numOfCartItemsSubject.next(0)
+    }
   })
 }
 

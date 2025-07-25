@@ -1,6 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { CartService } from '../../services/cart.service' ;
+import { CartResponse } from '../../interfaces/cart-response';
 
 @Component({
   selector: 'app-product',
@@ -11,13 +12,12 @@ export class ProductComponent {
 @Input({ required: true })product!:Product;
 cartService =inject(CartService)
 
-getTwoWords(str:string){
-  return str.split(" ",2).join(" ")
-}
+
 addToCart(id:string){
 this.cartService.addProductToCart(id).subscribe({
-  next:(Response)=>{this.cartService=Response},
-  error:(err)=>{}
+  next:(response:CartResponse)=>{this.cartService.numOfCartItemsSubject.next(response.numOfCartItems)},
+  
+  
 })
 }
 

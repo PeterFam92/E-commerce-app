@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class LoginComponent implements OnDestroy {
   private authService = inject(AuthService);
   private router = inject(Router);
+  cartService = inject(CartService);
 
   loginFormObj: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -38,6 +40,7 @@ export class LoginComponent implements OnDestroy {
             this.isLoading = false;
             localStorage.setItem( 'applicationToken', response.token  );
             this.authService.isLoggedIn.next(true);
+            this.cartService.getUpdatedCartItemsNumber();
             this.authService.currentUserNameSubject.next(response.user.name);
 
             this.router.navigate(['/home']);

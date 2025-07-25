@@ -21,11 +21,7 @@
             >Home</a
           >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="cart" routerLinkActive="text-main"
-            >Cart</a
-          >
-        </li>
+       
         <li class="nav-item">
           <a class="nav-link" routerLink="products" routerLinkActive="text-main"
             >Products</a
@@ -82,6 +78,15 @@
             routerLinkActive="text-main"
             >Sign Out</a
           >
+        </li>
+        <li class="nav-item">
+          <a routerLink="/cart" routerLinkActive="text-main" class="nav-link cursor-pointer position-relative"  >
+             <i class="fas fa-cart-shopping ">
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-main fs-small">
+   {{numOfLoggedUserCartItems}}
+    
+  </span>
+             </i></a>
         </li>
         }
       </ul>

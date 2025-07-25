@@ -3,9 +3,9 @@
         <a [routerLink]="['/product-details',product._id]">
         <img class="w-100" [src]="product.imageCover" [alt]="product.title">
         <span class="text-main font-sm fw-medium">{{product.category.name}}</span>
-        <p class="fw-medium">{{getTwoWords(product.title) }}</p>
+        <p class="fw-medium">{{product.title | sliceTitle:2|uppercase}}</p>
        <div class="d-flex justify-content-between">
-         <span>{{product.price}} EGP</span>
+         <span>{{product.price | addEGP}} </span>
         <div>
             <i class="fa-solid fa-star rating-color"></i>
         <span>{{product.ratingsAverage}}</span>

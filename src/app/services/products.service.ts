@@ -13,7 +13,7 @@ export class ProductsService {
 
 
   getAllProducts(): Observable<any> {
-    return this.httpClient.get<any>('https://ecommerce.routemisr.com/api/v1/products');
+    return this.httpClient.get<any>('https://ecommerce.routemisr.com/api/v1/products?limit=100');
   }
   getProductDetails(id:string):Observable<any>{
     return this.httpClient.get<any>(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
