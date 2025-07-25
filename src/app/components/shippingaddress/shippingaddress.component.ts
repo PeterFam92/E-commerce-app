@@ -45,6 +45,7 @@ export class ShippingaddressComponent {
         .subscribe({
           next: (response) => {
             this.redirectUserToPayementPage(response.session.url);
+            
           },
         });
     }
