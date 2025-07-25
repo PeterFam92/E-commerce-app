@@ -30,6 +30,8 @@ import { CategoriesSliderComponent } from './components/categories-slider/catego
 import { MainSliderComponent } from './components/main-slider/main-slider.component';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { loadingInterceptor } from './interceptors/loading.interceptor';
+import { ShippingaddressComponent } from './components/shippingaddress/shippingaddress.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { loadingInterceptor } from './interceptors/loading.interceptor';
     ProductDetailsComponent,
     CategoriesSliderComponent,
     MainSliderComponent,
+    ShippingaddressComponent,
+    OrdersComponent,
     
     
    

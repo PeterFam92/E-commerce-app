@@ -32,7 +32,7 @@ handelForgetPassword(){
         this.isLoading=false;
         this.router.navigate(['/verify-code'], )
       },
-      error :(err)=>{console.log("Error in forget password", err);
+      error :(err)=>{
         this.isLoading = false;
         this.errorResponseMessage = err.error.message;
       }

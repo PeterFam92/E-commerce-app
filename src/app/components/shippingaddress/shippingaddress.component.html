@@ -1,0 +1,18 @@
+<div class="w-75 mx-auto shadow border rounded p-5">
+
+    <h3>Enter Your Address Details</h3>
+    <form [formGroup]="shippingAddressForm" (ngSubmit)="onlinePayment()">
+<label class="mt-2" for="details">Details :</label>
+<input type="text" class="form-control" formControlName="details" id="details">
+
+
+<label class="mt-2" for="phone">Phone Number :</label>
+<input type="tel" class="form-control" formControlName="phone" id="phone">
+
+
+<label class="mt-2" for="city">City :</label>
+<input type="text" class="form-control" formControlName="city" id="city">
+
+<button class="btn bg-main mt-4 text-white"> Send </button>
+    </form>
+</div>

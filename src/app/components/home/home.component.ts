@@ -14,7 +14,7 @@ productsList:Product[]=[]
 ngOnInit(): void {
   this.productsService.getAllProducts().subscribe({
     next:(response)=>{this.productsList=response.data;},
-    error:(err)=>{}
+   
   })
 
 

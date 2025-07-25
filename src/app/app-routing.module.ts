@@ -18,6 +18,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UpdateuserpasswordComponent } from './components/updateuserpassword/updateuserpassword.component';
 import { EditUserinfoComponent } from './components/edit-userinfo/edit-userinfo.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ShippingaddressComponent } from './components/shippingaddress/shippingaddress.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 
@@ -30,7 +32,11 @@ const routes: Routes = [
   { path: 'brands',canActivate: [authGuard], component: BrandsComponent },
    { path: 'profile',canActivate: [authGuard], component: ProfileComponent, children:[{path: 'update-password', component: UpdateuserpasswordComponent},{path: 'edit-userinfo', component:EditUserinfoComponent}] },
     { path: 'product-details/:id',canActivate: [authGuard], component: ProductDetailsComponent },
+    { path: 'shippingaddress/:id/:type',canActivate: [authGuard], component: ShippingaddressComponent },
+    { path: 'allorders',canActivate: [authGuard], component: OrdersComponent },
+
   { path: 'sign-up', canActivate: [notauthGuard], component: SignUpComponent },
+
   { path: 'login', canActivate: [notauthGuard], component: LoginComponent },
   { path: 'sign-out', component: SignOutComponent },
   { path: 'forget-password', canActivate: [notauthGuard], component: ForgetPasswordComponent },
@@ -39,7 +45,7 @@ const routes: Routes = [
   {path: '**', component:NotfoundpageComponent } ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes ,{bindToComponentInputs:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
