@@ -19,7 +19,7 @@
     <div class="col-md-11">
         <div class="d-flex justify-content-between">
             <div>
-                <p class="my-0 fw-medium">{{cartProduct.product.title}}</p>
+                <p class="my-0 fw-medium">{{cartProduct.product.title|sliceTitle:16}}</p>
                 <p class="text-main fw-medium my-2 font-sm">{{cartProduct.price}} EGP</p>
                 <button (click)="deleteCartItem(cartProduct.product._id)" class="delete btn m-0 border rounded border-success">
                     <i class="fa-solid fa-trash-can text-main ms-2"></i>
