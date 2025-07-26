@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { RegisterRequest } from '../interfaces/register-request';
 import { Router } from '@angular/router';
-import { jwtDecode } from 'jwt-decode'; // Ensure you have jwt-decode installed
+import { jwtDecode } from 'jwt-decode'; 
 
 
 @Injectable({
@@ -11,7 +11,7 @@ import { jwtDecode } from 'jwt-decode'; // Ensure you have jwt-decode installed
 })
 export class AuthService {
   constructor() {
-    // Check token on service initialization
+   
     if(localStorage.getItem('applicationToken')) {
       this.isLoggedIn.next(true);
     }
@@ -35,6 +35,16 @@ currentUserNameSubject=new BehaviorSubject<string | null>(this.getCurrentUserNam
  else{
   return null
  }
+  }
+
+  getUserId(): string | null {
+    let token = localStorage.getItem('applicationToken');
+    if (token) {
+      let decodedToken: any = jwtDecode(token);
+      return decodedToken.id;
+    } else {
+      return null;
+    }
   }
 
 
