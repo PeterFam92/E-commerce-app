@@ -35,6 +35,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { AddEGPPipe } from './pipes/add-egp.pipe';
 import { SliceTitlePipe } from './pipes/slice-title.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { SearchPipe } from './pipes/search.pipe';
     AddEGPPipe,
     SliceTitlePipe,
     SearchPipe,
+    WishlistComponent,
     
     
    

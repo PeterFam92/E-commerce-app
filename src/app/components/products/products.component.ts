@@ -15,7 +15,7 @@ searchTerm : string =''
 
 ngOnInit(): void {
   this.productService.getAllProducts().subscribe({
-    next:(response)=>{console.log(response);
+    next:(response)=>{
       this.productList=response.data
     }
   })

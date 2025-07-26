@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SliceTitlePipe implements PipeTransform {
 
-  transform(value: string , count:number=1 )  {
+  transform(value: string  , count:number=1 )  {
     return value.split(' ',count).join(' ');
   }
 

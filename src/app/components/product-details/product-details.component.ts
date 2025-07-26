@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../interfaces/product';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from '../../services/cart.service';
+import { CartResponse } from '../../interfaces/cart-response';
+import { WishlistService } from '../../services/wishlist.service';
+
+
 
 @Component({
   selector: 'app-product-details',
@@ -10,10 +15,11 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrl: './product-details.component.css'
 })
 export class ProductDetailsComponent implements OnInit {
-
+  private cartService = inject(CartService)
+  private wishListService = inject(WishlistService)
   productId:string|null =null;
   productDetails:Product|null =null
-constructor(private activatedRoute:ActivatedRoute,private productservice:ProductsService){}
+constructor(private activatedRoute:ActivatedRoute, private productservice:ProductsService){}
 
  customOptions: OwlOptions = {
     loop: true,
@@ -60,10 +66,19 @@ this.productservice.getProductDetails(this.productId).subscribe({
     }
   })
 }
+addToCart(id:string){
+this.cartService.addProductToCart(id).subscribe({
+  next:(response:CartResponse)=>{this.cartService.numOfCartItemsSubject.next(response.numOfCartItems)},
+  
+  
+})
+}
+addToWishList(productId:string){
+  this.wishListService.addProductToWishList(productId).subscribe({
+    next:()=>{}
+  })
 
-
-
-
+}
 
 
 }

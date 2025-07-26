@@ -10,7 +10,7 @@ export interface Product {
     ratingsQuantity?:number,
     _id:string,
     title:string,
-    description?:string,
+    description:string,
     quantity:number,
     price?:number,
     imageCover:string,

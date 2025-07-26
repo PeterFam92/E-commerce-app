@@ -20,6 +20,7 @@ import { EditUserinfoComponent } from './components/edit-userinfo/edit-userinfo.
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ShippingaddressComponent } from './components/shippingaddress/shippingaddress.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
    { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', canActivate: [authGuard], component: HomeComponent },
   { path: 'cart',canActivate: [authGuard], component: CartComponent },
+  { path: 'wishlist',canActivate: [authGuard], component: WishlistComponent },
   { path: 'products',canActivate: [authGuard], component: ProductsComponent },
   { path: 'categories',canActivate: [authGuard], component: CategoriesComponent },
   { path: 'brands',canActivate: [authGuard], component: BrandsComponent },

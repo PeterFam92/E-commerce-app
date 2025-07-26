@@ -29,7 +29,10 @@
         <span class="ms-2">{{productDetails.ratingsAverage}}</span>
         </div>
        </div>
-       <button class="btn bg-main text-white w-100 mt-3">+Add to cart</button>
+      <div class="d-flex">
+         <button (click)="addToCart(productDetails._id)"  class="btn bg-main text-white flex-grow-1 mt-3 me-3">Add to cart <i class="fas fa-cart-shopping ms-2"></i></button>
+       <button (click)="addToWishList(productDetails._id)" class="btn bg-danger text-white flex-grow-1 mt-3">Add to Wishlist <i class="fas fa-heart ms-2"></i></button>
+      </div>
         </div>
     </div>
 </div>
