@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ProductsService } from '../../services/products.service';
+import { Category } from '../../interfaces/category';
 
 @Component({
   selector: 'app-categories',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './categories.component.css'
 })
 export class CategoriesComponent {
-
+ private productService = inject(ProductsService);
+ 
+  categoryList:Category[]=[]
+ngOnInit(): void {
+  this.productService.getAllCategeries().subscribe({
+    next:(response)=>{
+      this.categoryList=response.data
+    }
+  })
+}
 }

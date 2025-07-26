@@ -1,1 +1,21 @@
-<p>categories works!</p>
+
+
+<h3 class="text-uppercase fw-bolder text-center">all categories</h3>
+
+<div class="row row-cols-sm-1  row-cols-md-2 row-cols-lg-3 mt-4">
+@for (category of categoryList  ; track category._id)
+ {
+    <div class="col mt-2 ">
+    <div class=" text-center  border ">
+         <div class=" text-center product  ">
+       <img class="w-100 object-fit-cover " style="height: 400px;" [src]="category.image" [alt]="category.name">
+        <h3>{{category.name}}</h3>
+    </div>
+   
+    </div>
+    </div>
+ 
+}
+ 
+
+</div>

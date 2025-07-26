@@ -1,1 +1,20 @@
-<p>brands works!</p>
+
+
+
+<h3 class="text-uppercase fw-bolder text-center">all brands</h3>
+<div class="row row-cols-sm-1  row-cols-md-2  row-cols-lg-3 row-cols-xl-4 ">
+@for (brand of brandList  ; track brand._id)
+ {
+    <div class="col mt-2  ">
+    <div class="border">
+         <div class=" text-center product  ">
+       <img [src]="brand.image" [alt]="brand.name">
+       <h3>{{brand.name}}</h3>
+    </div>
+    </div>
+    </div>
+ 
+}
+ 
+
+</div>

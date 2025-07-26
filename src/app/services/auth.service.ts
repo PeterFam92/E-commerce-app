@@ -88,4 +88,13 @@ currentUserNameSubject=new BehaviorSubject<string | null>(this.getCurrentUserNam
       form
     );
   }
+
+updateUserPassword(form:any):Observable<any>{
+  return this.httpClient.put('https://ecommerce.routemisr.com/api/v1/users/changeMyPassword' , form )
+}
+
+updateUserInfo(form:any):Observable<any>{
+  return this.httpClient.put('https://ecommerce.routemisr.com/api/v1/users/updateMe/',form)
+}
+
 }
