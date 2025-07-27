@@ -13,21 +13,22 @@
       </div>
     </div>
     <div class="col-md-11">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between flex-column flex-md-row">
             <div>
                 <p class="my-0 fw-bold">{{product.title|sliceTitle:5}}</p>
                 <p class="my-0 fs-small text-secondary">{{product.description|sliceTitle:7}}</p>
                 <p class="text-main fw-medium my-2 font-sm">{{product.price|addEGP}}</p>
-                <button (click)="removeFromWishlist(product._id)" class="delete bg btn m-0 border rounded border-danger">
-                    <i class="fa-solid fa-trash-can text-danger ms-2"></i>
-                    <span class="ms-2 text-danger">Remove</span>
-                </button>
+              
 
             </div>
-            <div>
-                <button (click)="addToCart(product._id)" class="btn bg-main text-white"> Add To cart 
+            <div >
+                <button (click)="addToCart(product._id)" class="btn bg-main text-white w-100"> Add To cart 
                     <i class="fas fa-shopping-cart ms-2"></i>
                 </button>
+                <button (click)="removeFromWishlist(product._id)" class="delete bg btn m-0 border rounded border-danger w-100 mt-3">
+                  <i class="fa-solid fa-trash-can text-danger ms-2"></i>
+                  <span class="ms-2  text-danger">Remove</span>
+              </button>
             </div>
         
 

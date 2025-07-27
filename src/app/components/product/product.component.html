@@ -1,5 +1,5 @@
  
-    <div class="product p-3">
+    <div class="product p-3 border">
         <i (click)="addToWishList(product._id)" [class]="isWishListProduct(product._id)?'fas text-danger' : 'fa-regular'  " class="cursor-pointer  fa-heart fs-4"></i>
         <a [routerLink]="['/product-details',product._id]">
         <img class="w-100" [src]="product.imageCover" [alt]="product.title">

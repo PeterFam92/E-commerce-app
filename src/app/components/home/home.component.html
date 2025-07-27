@@ -1,7 +1,7 @@
  <app-main-slider></app-main-slider>
  <h3 class="my-3 fw-bolder">popular categories now :</h3>
 <app-categories-slider></app-categories-slider>
-<div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 ">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3 ">
 @for (product of productsList.slice(0,15); track product._id)
  {
     <div class="col">
