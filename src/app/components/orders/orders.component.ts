@@ -23,17 +23,15 @@ export class OrdersComponent implements OnInit {
   loadUserOrders(): void {
     this.isLoading = true;
     const userId = this.authService.getUserId();
-    console.log('Fetching orders for userId:', userId);
     if (userId) {
       this.orderService.getUserOrders(userId).subscribe({
         next: (response) => {
-          console.log('API Response for user orders:', response);
           this.isLoading = false;
-          if (response && response.length > 0) { 
-            this.userOrders = response; 
-            this.errorResponseMessage = ''; 
+          if (response && response.length > 0) {
+            this.userOrders = response;
+            this.errorResponseMessage = '';
           } else {
-            this.userOrders = []; 
+            this.userOrders = [];
             this.errorResponseMessage = 'No orders found for this user.';
           }
         },

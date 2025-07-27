@@ -28,8 +28,9 @@ this.cartService.addProductToCart(id).subscribe({
 
 addToWishList(productId:string){
   this.wishListService.addProductToWishList(productId).subscribe({
-    next:(response)=>{
-      this.wishListService.wishListProductsId.next(response.data)
+    next: (response) => {
+      this.wishListService.wishListProductsId.next(response.data);
+      this.wishListService.getUpdatedWishlistItemsNumber();
     }
   })
 
