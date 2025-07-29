@@ -33,7 +33,7 @@ this.cartService.addProductToCart(id).subscribe({
 removeFromWishlist(id:string){
   this.wishListService.removeItemFromWishList(id).subscribe({
     next:(response)=>{
-      this.wishListService.wishListProductsId.next(response.data);
+      this.getWishListData();
       this.wishListService.getUpdatedWishlistItemsNumber();
     },
  

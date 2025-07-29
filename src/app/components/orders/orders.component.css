@@ -1,0 +1,12 @@
+.card-img-top {
+    max-height: 100px; /* Adjust as needed for mobile */
+    object-fit: contain;
+}
+
+.card-body .card-title {
+    font-size: 0.85rem; /* Smaller font for titles on mobile */
+}
+
+.card-body .card-text {
+    font-size: 0.75rem; /* Smaller font for text on mobile */
+}

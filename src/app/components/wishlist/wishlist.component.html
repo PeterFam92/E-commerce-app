@@ -2,6 +2,7 @@
 
 
 
+@if(allWishListProducts.length>0){
     <div class="container bg-main-light p-3 rounded shadow">
   <h4 class="my-3 fw-bold border-bottom py-2 mb-3">My Wishlist</h4>
  
@@ -39,4 +40,8 @@
 
 
 </div>
+}
+@else {
+    <h2 class="bg-main-light text-center container rounded shadow p-4">Your Wishlist Is Empty Please Add Products</h2>
+}
 

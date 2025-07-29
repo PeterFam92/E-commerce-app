@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import{BrowserAnimationsModule}from'@angular/platform-browser/animations';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AppRoutingModule } from './app-routing.module';
@@ -78,10 +80,14 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
      BrowserAnimationsModule,
      CarouselModule,
      NgxSpinnerModule,
-     FormsModule
+     FormsModule,
+     ToastModule
      
   ],
-  providers: [provideHttpClient(withInterceptors([authInterceptor,loadingInterceptor]))],
+  providers: [
+    MessageService,
+    provideHttpClient(withInterceptors([authInterceptor,loadingInterceptor]))
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

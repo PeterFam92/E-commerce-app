@@ -1,17 +1,17 @@
 <div class="container my-5">
   <h2 class="text-center mb-4">Your Orders</h2>
 
-  <div *ngIf="isLoading" class="text-center py-5">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
+  @if (isLoading) {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     </div>
-  </div>
-
-  <div *ngIf="!isLoading && errorResponseMessage" class="alert alert-danger text-center" role="alert">
-    {{ errorResponseMessage }}
-  </div>
-
-  <div *ngIf="!isLoading && userOrders.length > 0">
+  } @else if (errorResponseMessage) {
+    <div class="alert alert-danger text-center" role="alert">
+      {{ errorResponseMessage }}
+    </div>
+  } @else if (userOrders.length > 0) {
     @for (order of userOrders; track order.id) {
       <div class="card mb-4">
         <div class="card-header bg-main text-white">
@@ -24,7 +24,7 @@
           <p class="card-text"><strong>Shipping Address:</strong> {{ order.shippingAddress.details }}, {{ order.shippingAddress.city }}</p>
 
           <h6 class="mt-4">Products:</h6>
-          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3">
             @for (product of order.cartItems; track product.product._id) {
               <div class="col">
                 <div class="card h-100">
@@ -41,9 +41,9 @@
         </div>
       </div>
     }
-  </div>
-
-  <div *ngIf="!isLoading && userOrders.length === 0 && !errorResponseMessage" class="alert alert-info text-center" role="alert">
-    You haven't placed any orders yet.
-  </div>
+  } @else {
+    <div class="alert alert-info text-center" role="alert">
+      You haven't placed any orders yet.
+    </div>
+  }
 </div>
