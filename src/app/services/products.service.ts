@@ -12,8 +12,23 @@ export class ProductsService {
 
 
 
-  getAllProducts(): Observable<any> {
-    return this.httpClient.get<any>('https://ecommerce.routemisr.com/api/v1/products?limit=100');
+  getAllProducts(minPrice: number | null, maxPrice: number | null, sortOrder: string): Observable<any> {
+    let url = 'https://ecommerce.routemisr.com/api/v1/products?limit=100';
+
+    if (minPrice !== null) {
+      url += `&price[gte]=${minPrice}`;
+    }
+    if (maxPrice !== null) {
+      url += `&price[lte]=${maxPrice}`;
+    }
+
+    if (sortOrder === 'priceAsc') {
+      url += '&sort=price';
+    } else if (sortOrder === 'priceDesc') {
+      url += '&sort=-price';
+    }
+
+    return this.httpClient.get<any>(url);
   }
   getProductDetails(id:string):Observable<any>{
     return this.httpClient.get<any>(`https://ecommerce.routemisr.com/api/v1/products/${id}`)

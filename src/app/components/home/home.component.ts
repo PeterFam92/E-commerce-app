@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 productsService = inject(ProductsService)
 productsList:Product[]=[]
 ngOnInit(): void {
-  this.productsService.getAllProducts().subscribe({
+  this.productsService.getAllProducts(null, null, 'relevance').subscribe({
     next:(response)=>{this.productsList=response.data;},
    
   })

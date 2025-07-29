@@ -1,6 +1,25 @@
 
 <input [(ngModel)]="searchTerm" type="search" placeholder="Please Enter Product Name" class="form-control my-3">
 
+<div class="row mb-3 align-items-center">
+  <div class="col-md-6">
+    <label for="priceFilter" class="form-label fw-medium">Filter by Price:</label>
+    <div class="input-group">
+      <input type="number" [(ngModel)]="minPrice" placeholder="Min Price" class="form-control">
+      <input type="number" [(ngModel)]="maxPrice" placeholder="Max Price" class="form-control">
+      <button class="btn btn-outline-secondary" type="button" (click)="applyFilters()">Apply</button>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="sortOrder" class="form-label fw-medium">Sort by:</label>
+    <select [(ngModel)]="sortOrder" (change)="applySort()" class="form-select">
+      <option value="relevance">Relevance</option>
+      <option value="priceAsc">Price: Low to High</option>
+      <option value="priceDesc">Price: High to Low</option>
+    </select>
+  </div>
+</div>
+
 
 <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 ">
 @for (product of (productList |search:searchTerm ); track product._id)
